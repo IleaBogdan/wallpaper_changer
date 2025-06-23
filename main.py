@@ -7,6 +7,10 @@ import win32gui
 import psutil
 from pathlib import Path
 
+# Log the start directory
+with open("C:\\Work\\wallpaper_changer\\log.txt", "a") as f:
+    f.write(f"Started in: {os.getcwd()}\n")
+
 # wp == wallpaper
 wp_dir=Path("./wallpapers")
 # wpn == wallpaper_name
@@ -81,4 +85,7 @@ def main():
 
 if __name__ == "__main__":
     import win32process
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        print("Wallpaper changer stopped by user.")
