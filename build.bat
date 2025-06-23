@@ -18,7 +18,13 @@ rmdir /s /q build
 rmdir /s /q dist
 del /q desktop_changer.spec
 
-REM Start the WallpaperChanger task silently
-schtasks /run /tn "WallpaperChanger" >nul 2>&1
+REM Check if the WallpaperChanger task exists
+schtasks /query /tn "WallpaperChanger" >nul 2>&1
+if %errorlevel%==0 (
+    schtasks /run /tn "WallpaperChanger" >nul 2>&1
+    echo Updated task sch.
+) else (
+    echo Need to set-up task sch.
+)
 
 echo Done!
