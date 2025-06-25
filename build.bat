@@ -2,9 +2,14 @@
 REM Kill the running desktop_changer.exe process if it exists
 taskkill /im desktop_changer.exe /f >nul 2>&1
 
+REM Wait a bit to ensure the process is stopped
+timeout /t 2 >nul
+
 REM Check if desktop_changer.exe exists and delete it
 if exist desktop_changer.exe (
     del /f /q desktop_changer.exe
+    REM Wait to ensure file is unlocked
+    timeout /t 1 >nul
 )
 
 REM Compile main.py into desktop_changer.exe using pyinstaller (no console)

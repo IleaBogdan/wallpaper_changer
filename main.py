@@ -6,6 +6,7 @@ import win32con
 import win32gui
 import psutil
 from pathlib import Path
+import datetime
 
 # Log the start directory
 with open("C:\\Work\\wallpaper_changer\\log.txt", "a") as f:
@@ -79,8 +80,15 @@ def main():
                 last_wallpaper = "idle"
         else:
             if last_wallpaper != "active":
+                now = datetime.datetime.now()
+                with open("C:\\Work\\wallpaper_changer\\log.txt", "a") as f:
+                    f.write(str(now.time()) + "\n")
+                time.sleep(2)
                 set_wallpaper(active_wpn_path)
                 last_wallpaper = "active"
+                now = datetime.datetime.now()
+                with open("C:\\Work\\wallpaper_changer\\log.txt", "a") as f:
+                    f.write(str(now.time()) + "\n")
         time.sleep(1)
 
 if __name__ == "__main__":
