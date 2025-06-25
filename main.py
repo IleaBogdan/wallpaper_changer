@@ -83,7 +83,7 @@ def main():
                 now = datetime.datetime.now()
                 with open("C:\\Work\\wallpaper_changer\\log.txt", "a") as f:
                     f.write(str(now.time()) + "\n")
-                time.sleep(2)
+                time.sleep(0.5)
                 set_wallpaper(active_wpn_path)
                 last_wallpaper = "active"
                 now = datetime.datetime.now()
