@@ -74,7 +74,7 @@ def main():
     last_wallpaper = None
 
     while True:
-        if is_foreground_fullscreen() or is_foreground_maximized():
+        if (is_foreground_fullscreen() or is_foreground_maximized()) and not is_desktop_focused():
             if last_wallpaper != "idle":
                 set_wallpaper(idle_wpn_path)
                 last_wallpaper = "idle"
