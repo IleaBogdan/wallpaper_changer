@@ -52,7 +52,7 @@ def is_desktop_focused():
 
 def is_foreground_fullscreen():
     hwnd = win32gui.GetForegroundWindow()
-    if hwnd == 0:
+    if hwnd == 0 or not win32gui.IsWindow(hwnd):
         return False
     rect = win32gui.GetWindowRect(hwnd)
     screen_width = win32api.GetSystemMetrics(0)
@@ -61,7 +61,7 @@ def is_foreground_fullscreen():
 
 def is_foreground_maximized():
     hwnd = win32gui.GetForegroundWindow()
-    if hwnd == 0:
+    if hwnd == 0 or not win32gui.IsWindow(hwnd):
         return False
     placement = win32gui.GetWindowPlacement(hwnd)
     return placement[1] == win32con.SW_SHOWMAXIMIZED
